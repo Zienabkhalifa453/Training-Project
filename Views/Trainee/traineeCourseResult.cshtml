@@ -1,0 +1,18 @@
+﻿@model traineeResultData
+@{
+    ViewData["Title"] = "traineeCourseResult";
+}
+
+<h1>trainee Course Result</h1>
+
+
+<h2> Trainee Name: @Model.TraineeName </h2>
+
+@foreach (var item in @Model.coursesData )
+{
+    <div style="background-color:@item.color">
+        <h3> course Name : @item.CourseName</h3>
+        <h3>course Degree :@item.CourseDegree </h3>
+        
+    </div>
+}

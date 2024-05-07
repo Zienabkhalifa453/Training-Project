@@ -1,0 +1,28 @@
+﻿@model List<Instructor>
+<h1 style="text-align:center">Instructors in Specific Department</h1>
+<table class="table table-border table-hover">
+
+    <tr style="font-size:30px">
+
+        <th>Name</th>
+        <th>Image</th>
+        <th>Address</th>
+        <th>Department Number</th>
+        <th>Department Name</th>
+
+    </tr>
+
+
+    @foreach (Instructor item in Model)
+    {
+            <tr style="font-size:25px">
+                <td>@item.Name</td>
+                <td><img src="/images/@item.Image" style="width:80px;height:80px" /></td>
+                <td>@item.Address</td>
+                <td>@item.departmentID</td>
+                <td>@item.department.Name</td>
+            </tr>
+    }
+
+</table>
+

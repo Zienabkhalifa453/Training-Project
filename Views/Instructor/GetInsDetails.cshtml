@@ -1,0 +1,24 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "GetInsDetails";
+}
+
+<h1 style= "text-align:center">Instructor Details</h1>
+
+<div style="text-align:center ; background-color:wheat">
+    <div>
+
+        <img src="/images/@Model.Image" style="width:100px;height:100px" />
+    </div>
+
+    <div>
+        <h2>Name: @Model.Name</h2>
+        <p>address:@Model.Address</p>
+        <p>salary:@Model.Salary </p>
+
+          <td><button> <a href="/Instructor/index/" style="text-decoration:none ; color:rebeccapurple">Back To Main</a></button> </td>
+    </div>
+
+
+
+</div>

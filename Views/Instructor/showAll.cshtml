@@ -1,0 +1,32 @@
+﻿@model List<Instructor>
+
+
+@{
+    ViewData["Title"] = "showAll";
+}
+
+<h1 style="color:blue;text-align:center" >All Instructors</h1>
+
+<table class="table table-border table-hover">
+
+    <tr style="font-size:30px">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+
+      
+    </tr>
+
+    @foreach (Instructor item in Model)
+    {
+            <tr style="font-size:25px">
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td><img src="/images/@item.Image" style="width:80px;height:80px" /></td>
+            
+                    <td><button> <a href="/Instructor/GetInsDetails/@item.ID" style="text-decoration:none ; color:rebeccapurple">Go To Details</a></button> </td>
+
+           
+            </tr>
+    }
+</table>

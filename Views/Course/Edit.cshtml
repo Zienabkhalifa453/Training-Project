@@ -1,0 +1,40 @@
+﻿@model CourseDataVM
+@{
+    ViewData["Title"] = "Edit";
+    SelectList deptlist = new SelectList(Model.Department, "ID", "Name");
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="savechange" asp-controller="Course" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Course Name</label>
+        <input asp-for="Name" class="form-control" />
+    
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Degree" class="control-label">Course Degree</label>
+        <input asp-for="Degree" class="form-control" />
+ 
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MinDegree" class="control-label">Minimum Degree</label>
+        <input asp-for="MinDegree" class="form-control" />
+       
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DepartmentId" class="control-label">Department</label>
+        <select asp-for="DepartmentId" asp-items="deptlist" class="form-control">
+            <option value="">-- Select Department--</option>
+        </select>
+   
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Course</button>
+</form>

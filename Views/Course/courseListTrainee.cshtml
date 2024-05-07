@@ -1,0 +1,31 @@
+﻿@model List<courseResultTraineeName>
+@{
+    ViewData["Title"] = "courseListTrainee";
+}
+
+<h1>course List Trainee</h1>
+
+
+
+<table class="table table-border table-hover">
+
+    <tr style="font-size:30px">
+
+        <th>Trainee Name</th>
+     <th>Course Name</th>
+        <th>Trainee Degree</th>
+
+    </tr>
+
+
+    @foreach (courseResultTraineeName item in Model)
+    {
+                    <tr style="font-size:25px; color:@item.color;">
+                        <td>@item.TraineeName</td>
+                        <td>@item.courseName</td>
+                        <td>@item.traineeDegree</td>
+                    </tr>
+    }
+
+</table>
+

@@ -1,0 +1,40 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "showall";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 style="color: blue; text-align: center;">All Courses</h1>
+
+<div class="row">
+    @foreach (Course item in Model)
+    {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">
+                            <strong>Course ID:</strong> @item.ID <br />
+                          
+                        </p>
+                        <div class="text-center">
+                            
+                            <a href="/Course/GetCourseDetails/@item.ID" class="btn btn-info btn-sm mb-2">View Details</a><br />
+                         
+                            <a href="/Course/Edit/@item.ID" class="btn btn-primary btn-sm mb-2">Edit course</a><br />
+                           
+                            <button class="btn btn-danger btn-sm" onclick="confirmDelete('@item.ID')"> Delete Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+
+<script>
+    function confirmDelete(courseId) {
+        if (confirm('Are you sure you want to delete this course?')) {
+            window.location.href = '/Course/DeleteCourse/' + courseId;
+        }
+    }
+</script>

@@ -1,0 +1,19 @@
+﻿@model MVCLab.ViewModel.traineeNameWithCourseNameAndDegree
+
+@{
+    ViewData["Title"] = "traineeDetails";
+}
+
+<h1>Trainee Details</h1>
+
+<div style="background-color: wheat;">
+    <h3> Trainee Name: @Model.traineeName </h3>
+
+    <h3> course Name: @Model.crsName </h3>
+
+    
+    <h3 style="color:@Model.color"> Trainee Degree: @Model.degree </h3>
+
+
+  
+</div>

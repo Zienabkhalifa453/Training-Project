@@ -1,0 +1,76 @@
+﻿@model InstructorDataVM
+@{
+    ViewData["Title"] = "addInstructor";
+}
+
+<h1>Add Instructor Form</h1>
+
+<form method="post" action="/Instructor/SaveRecord/">
+    <label>Instructor Name</label>
+    <input type="text" name="Name" id="Name" value="@Model?.Name" class="form form-control" />
+
+    <label>Image : </label>
+    <input type="text" name="Image" id="Image" value="@Model.Image" class="form form-control" />
+
+    <label>Salary </label>
+    <input type="number" name="Salary" id="Salary" value="@Model?.Salary" class="form form-control" />
+
+    <label>Address</label>
+    <input type="text" name="Address" id="Address" value="@Model?.Address" class="form form-control" />
+
+    <label>Departments</label>
+    <select name="DepartmentId" id="DepartmentId" class="form form-control">
+        @foreach (var DeptItem in Model.department)
+        {
+            if (Model.departmentID == DeptItem.ID)
+            {
+                        <option value="@DeptItem.ID" selected>@DeptItem.Name</option>
+            }
+            else
+            {
+                        <option value="@DeptItem.ID">@DeptItem.Name</option>
+            }
+        }
+    </select>
+
+    <label>Courses</label>
+    <select name="CourseId" id="CourseId" class="form form-control">
+        @foreach (var courseItem in Model.course)
+        {
+            if (Model.courseID == courseItem.ID)
+            {
+                        <option value="@courseItem.ID" selected>@courseItem.Name</option>
+            }
+            else
+            {
+                        <option value="@courseItem.ID">@courseItem.Name</option>
+            }
+        }
+    </select>
+
+    <input type="submit" class="btn btn-success" />
+
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $("#DepartmentId").change(function(){
+        $("#CourseId").html("");
+        var deptID = $("#DepartmentId").val();
+
+        $.ajax({
+            url: "/Instructor/getCourseByDeptID",
+            data: { id: deptID },
+            success: function(result){
+                for(var item of result){
+
+                    
+                    $("#CourseId").append('<option>'+item.name+'</option>');
+                }
+                console.log(result)
+            }
+        });
+    });
+
+
+</script>

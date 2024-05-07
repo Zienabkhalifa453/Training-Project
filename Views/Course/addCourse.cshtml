@@ -1,0 +1,46 @@
+﻿<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@model CourseDataVM
+@{
+    ViewData["Title"] = "addCourse";
+   
+    SelectList deptlist = new SelectList(Model.Department, "ID", "Name");
+}
+<h1>Add New Course</h1>
+
+<form asp-action="saveNew" asp-controller="Course" method="post">
+      <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+    <label asp-for="Name">Course Name</label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+    <label asp-for="Degree">Course Degree</label>
+    <input asp-for="Degree" class="form-control" />
+    <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    <div>
+    <label asp-for="MinDegree">Minimum Degree</label>
+    <input asp-for="MinDegree" class="form-control" />
+    <span asp-validation-for="MinDegree" class="text-danger"></span>
+     </div>
+   
+      <div>
+    <label asp-for="Hours">Course Hours</label>
+    <input asp-for="Hours" class="form-control" />
+    <span asp-validation-for="Hours" class="text-danger"></span>
+     </div>
+
+
+
+
+        <label asp-for="DepartmentId">Department</label>
+        <select asp-for="DepartmentId" asp-items="deptlist" class="form form-control" >
+            <option value="0">------select Department------</option>
+        </select>
+           <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    <button type="submit" class="btn btn-primary ">Save</button>
+</form>
